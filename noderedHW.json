@@ -1,0 +1,863 @@
+[
+    {
+        "id": "f683d225be327475",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3decce182b2c950a",
+        "type": "inject",
+        "z": "f683d225be327475",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 60,
+        "wires": [
+            [
+                "e7f7df6a157b148e",
+                "94d2324324665049",
+                "4190a7df5b821273",
+                "88464f2b577cf906",
+                "f453880b75861832",
+                "aab753b1cccb71e9"
+            ]
+        ]
+    },
+    {
+        "id": "e7f7df6a157b148e",
+        "type": "ui-button",
+        "z": "f683d225be327475",
+        "group": "e9d51b3fb0117533",
+        "name": "Read All",
+        "label": "Read All",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "d417853940e2fd18"
+            ]
+        ]
+    },
+    {
+        "id": "94d2324324665049",
+        "type": "ui-button",
+        "z": "f683d225be327475",
+        "group": "e9d51b3fb0117533",
+        "name": "Read Pending",
+        "label": "Read Pending list",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 420,
+        "y": 180,
+        "wires": [
+            [
+                "7b7745e9f7e56ad1"
+            ]
+        ]
+    },
+    {
+        "id": "4190a7df5b821273",
+        "type": "ui-button",
+        "z": "f683d225be327475",
+        "group": "e9d51b3fb0117533",
+        "name": "Read Done",
+        "label": "Read Done list",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 410,
+        "y": 240,
+        "wires": [
+            [
+                "d8d1155263b17a84"
+            ]
+        ]
+    },
+    {
+        "id": "d417853940e2fd18",
+        "type": "http request",
+        "z": "f683d225be327475",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8082/api/read?state=all",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 570,
+        "y": 120,
+        "wires": [
+            [
+                "7a19417bcaee5885"
+            ]
+        ]
+    },
+    {
+        "id": "7a19417bcaee5885",
+        "type": "json",
+        "z": "f683d225be327475",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 710,
+        "y": 120,
+        "wires": [
+            [
+                "e52d1d31f935f5d0",
+                "f3f31dc8a9f15217"
+            ]
+        ]
+    },
+    {
+        "id": "e52d1d31f935f5d0",
+        "type": "debug",
+        "z": "f683d225be327475",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "a91aea87e89b5c54",
+        "type": "ui-table",
+        "z": "f683d225be327475",
+        "group": "e9d51b3fb0117533",
+        "name": "",
+        "label": "text",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "maxrows": 0,
+        "passthru": false,
+        "autocols": true,
+        "showSearch": true,
+        "selectionType": "none",
+        "columns": [],
+        "mobileBreakpoint": "sm",
+        "mobileBreakpointType": "defaults",
+        "action": "replace",
+        "x": 1110,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f3f31dc8a9f15217",
+        "type": "function",
+        "z": "f683d225be327475",
+        "name": "function 1",
+        "func": "if (msg.payload && msg.payload.ret) {\n    msg.payload = msg.payload.ret;  \n} else {\n    msg.payload = [];  \n}\n\n// 返回更新后的消息\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 120,
+        "wires": [
+            [
+                "a91aea87e89b5c54",
+                "9d4b986c156740e4"
+            ]
+        ]
+    },
+    {
+        "id": "9d4b986c156740e4",
+        "type": "debug",
+        "z": "f683d225be327475",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1010,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "7b7745e9f7e56ad1",
+        "type": "http request",
+        "z": "f683d225be327475",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8082/api/read?state=pending",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 590,
+        "y": 180,
+        "wires": [
+            [
+                "1dd25b8e5aa11a3a"
+            ]
+        ]
+    },
+    {
+        "id": "1dd25b8e5aa11a3a",
+        "type": "json",
+        "z": "f683d225be327475",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 730,
+        "y": 180,
+        "wires": [
+            [
+                "c450c6f9565d7a6d"
+            ]
+        ]
+    },
+    {
+        "id": "c450c6f9565d7a6d",
+        "type": "function",
+        "z": "f683d225be327475",
+        "name": "function 3",
+        "func": "if (msg.payload && msg.payload.ret) {\n    msg.payload = msg.payload.ret;  \n} else {\n    msg.payload = [];  \n}\n\n// 返回更新后的消息\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 180,
+        "wires": [
+            [
+                "a91aea87e89b5c54"
+            ]
+        ]
+    },
+    {
+        "id": "d8d1155263b17a84",
+        "type": "http request",
+        "z": "f683d225be327475",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8082/api/read?state=done",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 570,
+        "y": 240,
+        "wires": [
+            [
+                "434a85a8b800972c"
+            ]
+        ]
+    },
+    {
+        "id": "434a85a8b800972c",
+        "type": "json",
+        "z": "f683d225be327475",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 710,
+        "y": 240,
+        "wires": [
+            [
+                "30569b6ce7483fdb"
+            ]
+        ]
+    },
+    {
+        "id": "30569b6ce7483fdb",
+        "type": "function",
+        "z": "f683d225be327475",
+        "name": "function 4",
+        "func": "if (msg.payload && msg.payload.ret) {\n    msg.payload = msg.payload.ret;  \n} else {\n    msg.payload = [];  \n}\n\n// 返回更新后的消息\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 240,
+        "wires": [
+            [
+                "a91aea87e89b5c54"
+            ]
+        ]
+    },
+    {
+        "id": "88464f2b577cf906",
+        "type": "ui-button",
+        "z": "f683d225be327475",
+        "group": "c7becca7d1767a94",
+        "name": "Input your Todo",
+        "label": "Add",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 420,
+        "y": 340,
+        "wires": [
+            [
+                "89645698a19b3c9b"
+            ]
+        ]
+    },
+    {
+        "id": "f7efe0612d37d972",
+        "type": "http request",
+        "z": "f683d225be327475",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8082/api/todo?todo={{payload}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 810,
+        "y": 340,
+        "wires": [
+            [
+                "3c812e2a2a80405d"
+            ]
+        ]
+    },
+    {
+        "id": "89645698a19b3c9b",
+        "type": "ui-text-input",
+        "z": "f683d225be327475",
+        "group": "c7becca7d1767a94",
+        "name": "Add your Todo",
+        "label": "Input your Todo",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "topic": "topic",
+        "topicType": "msg",
+        "mode": "text",
+        "tooltip": "",
+        "delay": 300,
+        "passthru": true,
+        "sendOnDelay": false,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "sendOnClear": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "x": 600,
+        "y": 340,
+        "wires": [
+            [
+                "f7efe0612d37d972"
+            ]
+        ]
+    },
+    {
+        "id": "3c812e2a2a80405d",
+        "type": "debug",
+        "z": "f683d225be327475",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "f453880b75861832",
+        "type": "ui-button",
+        "z": "f683d225be327475",
+        "group": "ba98229339378426",
+        "name": "ID change",
+        "label": "Change ",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 410,
+        "y": 440,
+        "wires": [
+            [
+                "cec3af500a79930f"
+            ]
+        ]
+    },
+    {
+        "id": "889696887546df55",
+        "type": "http request",
+        "z": "f683d225be327475",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8082/api/mark?id={{payload}}&state=done",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 770,
+        "y": 440,
+        "wires": [
+            [
+                "a92d02a4771d4a3a"
+            ]
+        ]
+    },
+    {
+        "id": "a92d02a4771d4a3a",
+        "type": "debug",
+        "z": "f683d225be327475",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "cec3af500a79930f",
+        "type": "ui-text-input",
+        "z": "f683d225be327475",
+        "group": "ba98229339378426",
+        "name": "Change",
+        "label": "Input your Todo code",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "topic": "topic",
+        "topicType": "msg",
+        "mode": "text",
+        "tooltip": "",
+        "delay": 300,
+        "passthru": true,
+        "sendOnDelay": false,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "sendOnClear": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "x": 580,
+        "y": 440,
+        "wires": [
+            [
+                "889696887546df55"
+            ]
+        ]
+    },
+    {
+        "id": "517e6f94e2db69e6",
+        "type": "debug",
+        "z": "f683d225be327475",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "f691f9c60880a9d0",
+        "type": "http request",
+        "z": "f683d225be327475",
+        "name": "",
+        "method": "DELETE",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:8082/api/remove?id={{payload}}",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 770,
+        "y": 560,
+        "wires": [
+            [
+                "517e6f94e2db69e6"
+            ]
+        ]
+    },
+    {
+        "id": "f9f81b9048039951",
+        "type": "ui-text-input",
+        "z": "f683d225be327475",
+        "group": "8aa3247dec270bf3",
+        "name": "Change",
+        "label": "Input delete ID",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "topic": "topic",
+        "topicType": "msg",
+        "mode": "text",
+        "tooltip": "",
+        "delay": 300,
+        "passthru": true,
+        "sendOnDelay": false,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "sendOnClear": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "x": 580,
+        "y": 560,
+        "wires": [
+            [
+                "f691f9c60880a9d0"
+            ]
+        ]
+    },
+    {
+        "id": "aab753b1cccb71e9",
+        "type": "ui-button",
+        "z": "f683d225be327475",
+        "group": "8aa3247dec270bf3",
+        "name": "ID delete",
+        "label": "Delete",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 400,
+        "y": 560,
+        "wires": [
+            [
+                "f9f81b9048039951"
+            ]
+        ]
+    },
+    {
+        "id": "e9d51b3fb0117533",
+        "type": "ui-group",
+        "name": "Read",
+        "page": "1dc4e040b053621a",
+        "width": "6",
+        "height": "1",
+        "order": -1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "c7becca7d1767a94",
+        "type": "ui-group",
+        "name": "Add",
+        "page": "1dc4e040b053621a",
+        "width": "6",
+        "height": "1",
+        "order": -1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "ba98229339378426",
+        "type": "ui-group",
+        "name": "Change the state",
+        "page": "1dc4e040b053621a",
+        "width": "6",
+        "height": "1",
+        "order": -1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "8aa3247dec270bf3",
+        "type": "ui-group",
+        "name": "Delete Todo",
+        "page": "1dc4e040b053621a",
+        "width": "6",
+        "height": "1",
+        "order": -1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "1dc4e040b053621a",
+        "type": "ui-page",
+        "name": "TodoList",
+        "ui": "a93341e5a60594b8",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "d99bd5832838b480",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "a93341e5a60594b8",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "showPageTitle": true,
+        "navigationStyle": "default",
+        "titleBarStyle": "default"
+    },
+    {
+        "id": "d99bd5832838b480",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    }
+]
