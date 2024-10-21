@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  app:
+    image: aaa
+    ports: 
+     - 8082:8082
+
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: qwe123
+    volumes:
+      - ./data:/var/lib/mysql
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin
+    ports:
+      - 3306:3306
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: qwe123
